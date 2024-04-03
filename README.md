@@ -46,7 +46,7 @@ audio and a reference portrait image. You can also provide a video to achieve fa
 </tr>
 </table>
 
-### Face reenacment
+### Face reenactment
 
 <table class="center">
 <tr>
@@ -95,7 +95,7 @@ pip install -r requirements.txt
 
 ### Download weights
 
-All the weights should be placed under the `./pretrained_weights` direcotry. You can download weights manually as follows:
+All the weights should be placed under the `./pretrained_model` directory. You can download weights manually as follows:
 
 1. Download our trained [weights](https://huggingface.co/ZJYang/AniPortrait/tree/main), which include four parts: `denoising_unet.pth`, `reference_unet.pth`, `pose_guider.pth`, `motion_module.pth` and `audio2mesh.pt`.
 
@@ -105,10 +105,10 @@ All the weights should be placed under the `./pretrained_weights` direcotry. You
     - [image_encoder](https://huggingface.co/lambdalabs/sd-image-variations-diffusers/tree/main/image_encoder)
     - [wav2vec2-base-960h](https://huggingface.co/facebook/wav2vec2-base-960h)
 
-Finally, these weights should be orgnized as follows:
+Finally, these weights should be organized as follows:
 
 ```text
-./pretrained_weights/
+./pretrained_model/
 |-- image_encoder
 |   |-- config.json
 |   `-- pytorch_model.bin
@@ -160,7 +160,7 @@ You can refer the format of animation.yaml to add your own reference images or p
 python -m scripts.vid2pose --video_path pose_video_path.mp4
 ```
 
-### Face reenacment
+### Face reenactment
 
 ```shell
 python -m scripts.vid2vid --config ./configs/prompts/animation_facereenac.yaml -W 512 -H 512
@@ -210,7 +210,7 @@ accelerate launch train_stage_1.py --config ./configs/train/stage1.yaml
 
 ### Stage2
 
-Put the pretrained motion module weights `mm_sd_v15_v2.ckpt` ([download link](https://huggingface.co/guoyww/animatediff/blob/main/mm_sd_v15_v2.ckpt)) under `./pretrained_weights`. 
+Put the pretrained motion module weights `mm_sd_v15_v2.ckpt` ([download link](https://huggingface.co/guoyww/animatediff/blob/main/mm_sd_v15_v2.ckpt)) under `./pretrained_model`. 
 
 Specify the stage1 training weights in the config file `stage2.yaml`, for example:
 
